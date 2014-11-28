@@ -5,10 +5,13 @@ LIN110 project to see how fast people can learn linguistic concepts
 
 USING THE RAILS APP:
 After pulling, execute
+
+	```
     $ cd app
 	$ bundle install
 	$ RAILS_ENV=development rake db:migrate
     $ rails s
+    ```
 
 Then goto localhost:3000 in your browser.
 
