@@ -1,0 +1,3 @@
+[phoneme1] [phoneme2]
+fir
+fire
