@@ -5,7 +5,7 @@
 # November 15, 2014
 
 from nltk import word_tokenize
-from nltk import parse_cfg
+from nltk import CFG
 from nltk import ChartParser
 from nltk.tree import Tree
 from nltk.draw.util import CanvasFrame
@@ -17,8 +17,11 @@ from subprocess import call
 
 # from nltk.corpus import treebank
 
+# maximum number of trees to generate
+MAX_TREES = 1
+
 # grammar that we're using in class
-class_grammar_1 = parse_cfg("""
+class_grammar_1 = CFG.fromstring("""
     Start -> S
     S -> NP VP | NP aux VP
     NP -> N | Det N | Adj N | Det Adj N | N PP | Det N PP | Adj N PP | Det Adj N PP
@@ -31,7 +34,7 @@ class_grammar_1 = parse_cfg("""
     Adj -> 'red' | 'blue' | 'quick' | 'slow'
     P -> 'with' | 'by' | 'in'
     """)
-class_grammar_2 = parse_cfg("""
+class_grammar_2 = CFG.fromstring("""
     Start -> S
     S -> NP VP | NP Aux VP
     NP -> N | Det N | AdjP N | Det AdjP N | N PP | Det N PP | AdjP N PP | Det AdjP N PP
@@ -55,7 +58,7 @@ class_grammar_2 = parse_cfg("""
     Conj -> 'and' | 'or'
     P -> 'with' | 'by' | 'in'
     """)
-class_grammar_3 = parse_cfg("""
+class_grammar_3 = CFG.fromstring("""
     Start -> S
     S -> NP VP | NP Aux VP
     NP -> Nprime | Det Nprime
@@ -112,7 +115,9 @@ def computeNameFromSentence(sentence):
 if __name__ == '__main__':
     # generate the parse tree for the sentence they inputed
     trees = generate_parse_tree(sys.argv[1], get_grammar(sys.argv[2]))
+    numTrees = 0
     for tree in trees:
+        if numTrees >= MAX_TREES: break
         # print "tree using grammar " + ": "
         # draw_trees(tree)
         # http://stackoverflow.com/questions/23429117/saving-nltk-drawn-parse-tree-to-image-file
@@ -127,3 +132,4 @@ if __name__ == '__main__':
         call(["convert", filename + '.ps', filename + '.png'])
         cf.destroy()
         print filename + '.png'
+        numTrees += 1
