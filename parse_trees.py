@@ -5,7 +5,7 @@
 # November 15, 2014
 
 from nltk import word_tokenize
-from nltk.grammar import parse_cfg
+from nltk import parse_cfg
 from nltk import ChartParser
 from nltk.tree import Tree
 from nltk.draw.util import CanvasFrame
