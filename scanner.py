@@ -1,4 +1,10 @@
-# scanner module
+# author: 	   Luisa Neves
+# project:     Phonemic Analysis
+# file: 	   scanner.py - module to scan the input
+# description: Parses an input file to determine and
+#			   separate the two target phonemes and
+#			   the list of words. Also calls the analysis
+#			   functions.
 from word import Word
 
 def run(phonemes, words):
@@ -15,7 +21,7 @@ def run(phonemes, words):
 	for w in wt_pairs: print(w)
 
 def parse_phoneme(line):
-	"""Parses first line of the file into the two target phonemes."""
+    """Parses first line of the file into the two target phonemes."""
     phonemes = line.partition(' ')
     phoneme1 = phonemes[0]
     phoneme2 = phonemes[2]
