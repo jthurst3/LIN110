@@ -11,8 +11,9 @@ from nltk.tree import Tree
 from nltk.draw.util import CanvasFrame
 from nltk.draw import TreeWidget
 # from nltk.corpus import brown
-from nltk.draw.tree import draw_trees
+# from nltk.draw.tree import draw_trees
 import sys
+from subprocess import call
 
 # from nltk.corpus import treebank
 
@@ -89,16 +90,21 @@ def generate_parse_tree(sentence, grammar):
     # then generate the parse trees
     tokens = word_tokenize(lower)
     parser = ChartParser(grammar)
-    print type(grammar), type(parser)
+    # print type(grammar), type(parser)
     try:
         return parser.parse(tokens)
     except Exception:
         print "Sentence '" + sentence + "' cannot be parsed using the given grammar."
-        return Tree('Error', ['No Solution'])
+        return Tree('Error', ['The sentence ' + sentence + ' is not a valid sentence using the given grammar. Please try another sentence.'])
 
 
 def get_grammar(num):
     return grammars[int(num)-1]
+
+
+# given the sentence, computes the part of the file name using the sentence
+def computeNameFromSentence(sentence):
+    return sentence.replace(" ", "_")
 
 
 # main method of the parse tree program
@@ -107,11 +113,17 @@ if __name__ == '__main__':
     # generate the parse tree for the sentence they inputed
     trees = generate_parse_tree(sys.argv[1], get_grammar(sys.argv[2]))
     for tree in trees:
-        print "tree using grammar " + ": "
+        # print "tree using grammar " + ": "
         # draw_trees(tree)
         # http://stackoverflow.com/questions/23429117/saving-nltk-drawn-parse-tree-to-image-file
         cf = CanvasFrame()
         tc = TreeWidget(cf.canvas(), tree)
         cf.add_widget(tc, 10, 10)  # (10,10) offsets
-        cf.print_to_file('tree.ps')
+        # compute the filename from the input, then write the image to the file
+        filename = 'trees/tree_' + sys.argv[2] + '_' + computeNameFromSentence(sys.argv[1])
+        cf.print_to_file(filename + '.ps')
+        # convert the file to PNG
+        # http://stackoverflow.com/questions/89228/calling-an-external-command-in-python
+        call(["convert", filename + '.ps', filename + '.png'])
         cf.destroy()
+        print filename + '.png'

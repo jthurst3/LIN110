@@ -1,0 +1,6 @@
+# Python pyc files
+*.pyc
+
+# png and postscript files
+trees/*.ps
+trees/*.png
