@@ -12,7 +12,7 @@ class Word:
 	def __init__(self, word):
 		self.word = word
 		self.arpa = self.arpabet(word)
-		self.ipa = self.ipa(self.arpa)
+		# self.ipa = self.ipa(self.arpa)
 
 	def __str__(self):
 		s = ''

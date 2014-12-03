@@ -5,6 +5,7 @@
 # description: Given a body of words and two phonemes,
 #			   this program will determine the status
 #			   of distribution of the phonemes.
+#			   All printing in run() and analyze()
 import scanner
 
 def main():
@@ -15,15 +16,3 @@ def main():
 	scanner.run(data[0], data[1:])
 
 main()
-
-index = word.index(phoneme)
-
-		if index == 0:
-			env.append('#')
-		else:
-			env.append(word[index-1])
-
-		if index == len(word):
-			env.append('#')
-		else:
-			env.append(word[index+1])
