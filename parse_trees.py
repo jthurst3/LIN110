@@ -115,6 +115,7 @@ def computeNameFromSentence(sentence):
 if __name__ == '__main__':
     # generate the parse tree for the sentence they inputed
     trees = generate_parse_tree(sys.argv[1], get_grammar(sys.argv[2]))
+    # print type(trees)
     numTrees = 0
     for tree in trees:
         if numTrees >= MAX_TREES:

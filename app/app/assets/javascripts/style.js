@@ -23,7 +23,12 @@ $(document).ready(function(){
 			}
 		}).done(function(resp){
 			//var link = resp.substring(6)
-			$("#result").append("<img src='assets/"+resp+"'>");
+			// console.log(resp);
+			if (resp === null) {
+				$("#result").html("<em>The given sentence is ungrammatical or could not be parsed.</em>");
+			} else {
+				$("#result").html("<img src='assets/"+resp+"'>");
+			}
 			console.log(resp);
 		});
 	});
