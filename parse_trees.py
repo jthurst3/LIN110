@@ -117,7 +117,8 @@ if __name__ == '__main__':
     trees = generate_parse_tree(sys.argv[1], get_grammar(sys.argv[2]))
     numTrees = 0
     for tree in trees:
-        if numTrees >= MAX_TREES: break
+        if numTrees >= MAX_TREES:
+            break
         # print "tree using grammar " + ": "
         # draw_trees(tree)
         # http://stackoverflow.com/questions/23429117/saving-nltk-drawn-parse-tree-to-image-file

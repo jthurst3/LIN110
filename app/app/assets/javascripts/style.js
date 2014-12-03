@@ -23,7 +23,7 @@ $(document).ready(function(){
 			}
 		}).done(function(resp){
 			//var link = resp.substring(6)
-			$("#result").append("<img src='"+resp+"'>");
+			$("#result").append("<img src='assets/"+resp+"'>");
 			console.log(resp);
 		});
 	});
