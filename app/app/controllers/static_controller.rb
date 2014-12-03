@@ -6,8 +6,10 @@ class StaticController < ApplicationController
   	text = params['k']
   	ret = %x(cd ..; python parse_trees.py #{text} 2)
   	ret = ret.strip
-  	r = %x(ls app/assets/images/#{ret} ; mv ../#{ret} app/assets/images/#{ret} 2>&1)
-  	render json:r.to_json
+  	link = ret[6..ret.length]
+  	#r = %x(ls app/assets/images/trees ; mv ../#{ret} app/assets/images/#{ret} )
+  	r = %x(mv ../#{ret} app/assets/images/#{link} )
+  	render json:link.to_json
   end
 
 end

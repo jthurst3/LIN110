@@ -97,7 +97,7 @@ def generate_parse_tree(sentence, grammar):
     try:
         return parser.parse(tokens)
     except Exception:
-        print "Sentence '" + sentence + "' cannot be parsed using the given grammar."
+        #print "Sentence '" + sentence + "' cannot be parsed using the given grammar."
         return Tree('Error', ['The sentence ' + sentence + ' is not a valid sentence using the given grammar. Please try another sentence.'])
 
 

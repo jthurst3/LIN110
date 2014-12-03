@@ -22,9 +22,9 @@ $(document).ready(function(){
 				//alert(resp);
 			}
 		}).done(function(resp){
-			$("#result").append("<img src=../"+ resp +">");
+			//var link = resp.substring(6)
+			$("#result").append("<img src='"+resp+"'>");
 			console.log(resp);
-			//alert("done");
 		});
 	});
 });
