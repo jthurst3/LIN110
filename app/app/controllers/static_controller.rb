@@ -1,17 +1,13 @@
 class StaticController < ApplicationController
   def home
-  	a = {"1"=>"one", "2"=>"two"}
-  	@log = params
-  	text = params['text_to_parse']
-  	if text
-  		ret = %x("python parse_trees #{text} 3")
-  		render json:ret.to_json
-  	end
   end
 
   def path
-  	a = {"1"=>"one", "2"=>"two"}
-  	redirect_to '/'
+  	text = params['k']
+  	ret = %x(cd ..; python parse_trees.py #{text} 2)
+  	ret = ret.strip
+  	r = %x(ls app/assets/images/#{ret} ; mv ../#{ret} app/assets/images/#{ret} 2>&1)
+  	render json:r.to_json
   end
 
 end
