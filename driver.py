@@ -1,9 +1,11 @@
-# author: Luisa Neves
-# course: LIN110
-# project: Phonemic Analysis
+# author:      Luisa Neves
+# course: 	   LIN110
+# project: 	   Phonemic Analysis
+# file:		   driver.py - main function
 # description: Given a body of words and two phonemes,
-#              this program will determine the status
-#              of distribution of the phonemes.
+#			   this program will determine the status
+#			   of distribution of the phonemes.
+#			   All printing in run() and analyze()
 import scanner
 
 
