@@ -2,34 +2,29 @@ $(document).ready(function(){
 	$("form").submit(function(){
 		event.preventDefault();
 		var inpt = $("#text_to_parse").val();
-		/*$.post("/path", {k : inpt},  function(response, status){
-			console.log(status);
-			console.log(response);
-			$("#result").append("<img src='t.ps'>");
-			//$("#result").append(resp);
-
-		}).done(function(){
-			alert("done");
-		}).always(function(){
-			alert("always");
-		});*/
 		$.ajax({
 			type: 'POST',
 			url: '/path',
 			data: {k : inpt},
 			async: false,
-			success: function(resp, status){
-				//alert(resp);
-			}
 		}).done(function(resp){
-			//var link = resp.substring(6)
-			// console.log(resp);
-			if (resp === null) {
+			if (resp.tree === null) {
 				$("#result").html("<em>The given sentence is ungrammatical or could not be parsed.</em>");
 			} else {
-				$("#result").html("<img src='assets/"+resp+"'>");
+				$("#result").html("<img src='assets/"+resp.tree+"'>");
+			}
+			if (resp.counter >= 2) {
+				$("#text_to_parse").attr("disabled", "disabled");
+				$("input[name='commit']").attr("disabled", "disabled");
+				$("#survey").css("display","block");
 			}
 			console.log(resp);
+		});
+	});
+
+	$("button").click(function(){
+		$.post("/path", {k: "clear"}, function(){
+			location.reload();
 		});
 	});
 });
