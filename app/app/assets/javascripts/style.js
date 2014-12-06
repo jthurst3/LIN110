@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	$("form").submit(function(){
+	$(".tree_form").submit(function(){
 		event.preventDefault();
 		var inpt = $("#text_to_parse").val();
 		$.ajax({
@@ -15,7 +15,7 @@ $(document).ready(function(){
 			}
 			if (resp.counter >= 2) {
 				$("#text_to_parse").attr("disabled", "disabled");
-				$("input[name='commit']").attr("disabled", "disabled");
+				$(".draw_tree").attr("disabled", "disabled");
 				$("#survey").css("display","block");
 			}
 			console.log(resp);

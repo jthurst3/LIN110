@@ -7,9 +7,22 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-	<div class="container">
+<div class="container">
+		<header class="row">
+			<div class="col-lg-offset-2 col-lg-8 green">
+				<h2>Learn Linguistics Faster</h2>
+			</div>
+		</header>
+	<section class="row">
+		<div class="col-lg-offset-2 col-lg-8 form-class green">
 		<%= yield %>
-	</div>
+		</div>
+	</section>
+	<footer class="row">
+		<div class="col-lg-offset-2 col-lg-8 green">
+			<p>Authors: Hassler, Luisa, Jamie, Ben</p>
+		</div>
+	</footer>
+</div>
 </body>
 </html>

@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
+
 root 'static#home'
 post '/' => 'static#home'
 post '/path' => 'static#path'
-match '/questionnaire' => 'static#questionnaire', via: ['get', 'post']
+match '/log/new' => 'logs#new', via: 'get'
+match '/logs' => 'logs#create', via: 'post'
+match '/log/index' => 'logs#index', via: 'get'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

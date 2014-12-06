@@ -28,8 +28,4 @@ class StaticController < ApplicationController
   	render json:{tree: link, counter: success} .to_json
   end
 
-  def questionnaire
-      
-  end
-
 end

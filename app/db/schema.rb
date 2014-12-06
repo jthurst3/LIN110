@@ -11,12 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141115204117) do
+ActiveRecord::Schema.define(version: 20141206021648) do
 
   create_table "logs", force: true do |t|
-    t.string   "input"
-    t.string   "yes"
-    t.string   "no"
+    t.string   "q1"
+    t.string   "q2"
+    t.string   "q3"
+    t.string   "q4"
+    t.string   "q5"
+    t.string   "q6"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
