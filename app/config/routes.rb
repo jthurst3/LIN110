@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
 
 root 'static#home'
-post '/' => 'static#home'
+get '/' => 'static#home'
+get '/parsing' => 'static#parsing'
+get '/phonology' => 'static#phonology'
 post '/path' => 'static#path'
+post '/phoneme_allophone_program' => 'static#phoneme_allophone_program'
 match '/log/new' => 'logs#new', via: 'get'
 match '/logs' => 'logs#create', via: 'post'
 match '/log/index' => 'logs#index', via: 'get'
