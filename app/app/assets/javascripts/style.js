@@ -39,11 +39,17 @@ $(document).ready(function(){
 			data: {phones : phone1 + " " + phone2, words: words},
 			async: false,
 		}).done(function(resp){
-			// if (resp.tree === null) {
-			// 	$("#result").html("<em>The given sentence is ungrammatical or could not be parsed.</em>");
-			// } else {
-				$("#result").html("Success");
-			// }
+			// reset the result text
+			$("#result").html("");
+			// output the environments
+			$("#result").append("<b>Environments for [" + phone1 + "]</b>: " + resp.env1 + "<br>");
+			$("#result").append("<b>Environments for [" + phone2 + "]</b>: " + resp.env2 + "<br>");
+			// output complementary or contrastive
+			$("#result").append("<b>[" + phone1 + "]</b> and <b> [" + phone2 + "]</b> are in " + resp.result1 + ".<br>");
+			// output same or different
+			if (resp.result2 !== null) {
+				$("#result").append("<b>[" + phone1 + "]</b> and <b> [" + phone2 + "]</b> are " + resp.result2 + ".<br>");
+			};
 			if (resp.counter >= 2) {
 				$("#text_to_parse").attr("disabled", "disabled");
 				$(".draw_tree").attr("disabled", "disabled");

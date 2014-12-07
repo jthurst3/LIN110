@@ -14,8 +14,8 @@ def main():
     # with open('input.txt', 'r') as f:
     #     data = f.readlines()
     #     data = [i.strip('\n') for i in data]
-    print sys.argv[0]
-    print sys.argv[1:]
+    # print sys.argv[0]
+    # print sys.argv[1:]
     scanner.run(sys.argv[1], sys.argv[2:])
 
 main()

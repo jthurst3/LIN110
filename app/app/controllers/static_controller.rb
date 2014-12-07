@@ -46,13 +46,19 @@ class StaticController < ApplicationController
     word_strings = ""
     words.each { |w| word_strings << (w + " ") }
   	ret = %x(cd ..; python driver.py "#{phones}" #{word_strings})
-    puts ret
-  	# ret = ret.strip
+  	results = ret.split(/\n/)
+    environment1 = results[0]
+    environment2 = results[1]
+    compContrastive = results[2]
+    phonemeResult = results[3]
+    puts environment1
+    puts environment2
   	# link = ret[6..ret.length]
   	# r = %x(mv ../#{ret} app/assets/images/#{link} )
-   #  success = log link
-   #  #logger.debug "THIS IS A LOG TEXT #{success}"
-  	# render json:{tree: link, counter: success} .to_json
+    # success = log link
+    #logger.debug "THIS IS A LOG TEXT #{success}"
+    # counter is a placeholder. TODO: consider deleting?
+  	render json:{env1: environment1, env2: environment2, result1: compContrastive, result2: phonemeResult, counter: 1} .to_json
   end
 
 end

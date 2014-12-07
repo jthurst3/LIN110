@@ -13,12 +13,12 @@ def run(phonemes, words):
     """Driver to call parsing and comparing functions."""
     phoneme1, phoneme2 = parse_phoneme(phonemes)
 
-    print(phoneme1)
-    print(phoneme2)
-    print(words)
-    print('Target phonemes: [' + phoneme1 + '], [' + phoneme2 + ']')
-    print('Data set: ')
-    print(words)
+    # print(phoneme1)
+    # print(phoneme2)
+    # print(words)
+    # print('Target phonemes: [' + phoneme1 + '], [' + phoneme2 + ']')
+    # print('Data set: ')
+    # print(words)
     # for each word in words, return word-trans pair
     # wt_pairs = [Word(w) for w in words]
     # for w in wt_pairs: print(w)
