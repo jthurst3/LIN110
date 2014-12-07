@@ -4,6 +4,10 @@ $(document).ready(function(){
 		var inpt = $("#text_to_parse").val();
 		// http://stackoverflow.com/questions/596351/how-can-i-get-which-radio-is-selected-via-jquery
 		var grammar = $('input[name=grammar]:checked', '#parsing').val();
+		console.log(grammar);
+		// default should be first grammar
+		if (grammar === undefined) {grammar = "1"};
+		console.log(grammar);
 		$.ajax({
 			type: 'POST',
 			url: '/path',
