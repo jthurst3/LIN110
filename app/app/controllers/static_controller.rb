@@ -17,6 +17,7 @@ class StaticController < ApplicationController
   end
 
   def path
+  	puts params
   	text = params['k'].to_s
     clear if text == "clear"
   	ret = %x(cd ..; python parse_trees.py "#{text}" 1)

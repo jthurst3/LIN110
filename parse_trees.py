@@ -88,17 +88,15 @@ grammars = [class_grammar_1, class_grammar_2, class_grammar_3]
 
 
 def generate_parse_tree(sentence, grammar):
-    # first, convert the sentence to lowercase
-    lower = sentence.lower()
     # then generate the parse trees
-    tokens = word_tokenize(lower)
+    tokens = word_tokenize(sentence)
     parser = ChartParser(grammar)
     # print type(grammar), type(parser)
     try:
         return parser.parse(tokens)
     except Exception:
         #print "Sentence '" + sentence + "' cannot be parsed using the given grammar."
-        return Tree('Error', ['The sentence ' + sentence + ' is not a valid sentence using the given grammar. Please try another sentence.'])
+        return Tree('Error', ['Error'])
 
 
 def get_grammar(num):
@@ -113,13 +111,22 @@ def computeNameFromSentence(sentence):
 # main method of the parse tree program
 # takes in a sentence in the command-line, outputs all possible parse trees of the sentence
 if __name__ == '__main__':
+    # first, convert the sentence to lowercase
+    low = sys.argv[1].lower()
+    # then chop off the punctuation
+    # http://stackoverflow.com/questions/16050952/how-to-remove-all-the-punctuation-in-a-string-python
+    lower = "".join(c for c in low if c not in ('!', '.', '?'))
     # generate the parse tree for the sentence they inputed
-    trees = generate_parse_tree(sys.argv[1], get_grammar(sys.argv[2]))
+    trees = generate_parse_tree(lower, get_grammar(sys.argv[2]))
     # print type(trees)
     numTrees = 0
     for tree in trees:
         if numTrees >= MAX_TREES:
             break
+        # if the tree is an error tree, continue to the next one
+        # print tree
+        if tree == "Error":
+            continue
         # print "tree using grammar " + ": "
         # draw_trees(tree)
         # http://stackoverflow.com/questions/23429117/saving-nltk-drawn-parse-tree-to-image-file
@@ -127,7 +134,7 @@ if __name__ == '__main__':
         tc = TreeWidget(cf.canvas(), tree)
         cf.add_widget(tc, 10, 10)  # (10,10) offsets
         # compute the filename from the input, then write the image to the file
-        filename = 'trees/tree_' + sys.argv[2] + '_' + computeNameFromSentence(sys.argv[1])
+        filename = 'trees/tree_' + sys.argv[2] + '_' + computeNameFromSentence(lower)
         cf.print_to_file(filename + '.ps')
         # convert the file to PNG
         # http://stackoverflow.com/questions/89228/calling-an-external-command-in-python
