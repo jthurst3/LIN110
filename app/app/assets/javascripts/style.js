@@ -25,20 +25,25 @@ $(document).ready(function(){
 	});
 	$(".phonology_form").submit(function(event){
 		event.preventDefault();
-		var inpt = $("#text_to_parse").val();
-		// http://stackoverflow.com/questions/596351/how-can-i-get-which-radio-is-selected-via-jquery
-		var grammar = $('input[name=grammar]:checked', '#phonology').val();
+		// get phones
+		var phone1 = $("#first_phone").val();
+		var phone2 = $("#second_phone").val();
+		// get words
+		var words = [];
+		for (var i = 0; i < 5; i++) {
+			words.push($("#word" + i).val());
+		};
 		$.ajax({
 			type: 'POST',
-			url: '/path',
-			data: {k : inpt, gram: parseInt(grammar)},
+			url: '/phoneme_allophone_program',
+			data: {phones : phone1 + " " + phone2, words: words},
 			async: false,
 		}).done(function(resp){
-			if (resp.tree === null) {
-				$("#result").html("<em>The given sentence is ungrammatical or could not be parsed.</em>");
-			} else {
-				$("#result").html("<img src='assets/"+resp.tree+"'>");
-			}
+			// if (resp.tree === null) {
+			// 	$("#result").html("<em>The given sentence is ungrammatical or could not be parsed.</em>");
+			// } else {
+				$("#result").html("Success");
+			// }
 			if (resp.counter >= 2) {
 				$("#text_to_parse").attr("disabled", "disabled");
 				$(".draw_tree").attr("disabled", "disabled");

@@ -26,6 +26,7 @@ class StaticController < ApplicationController
 
   def path
   	puts params
+    puts "hello"
   	text = params['k'].to_s
   	grammar = params['gram']
     clear if text == "clear"
@@ -40,16 +41,18 @@ class StaticController < ApplicationController
 
   def phoneme_allophone_program
   	puts params
-  	text = params['k'].to_s
-  	grammar = params['gram']
-    clear if text == "clear"
-  	ret = %x(cd ..; python parse_trees.py "#{text}" #{grammar})
-  	ret = ret.strip
-  	link = ret[6..ret.length]
-  	r = %x(mv ../#{ret} app/assets/images/#{link} )
-    success = log link
-    #logger.debug "THIS IS A LOG TEXT #{success}"
-  	render json:{tree: link, counter: success} .to_json
+  	phones = params['phones']
+  	words = params['words']
+    word_strings = ""
+    words.each { |w| word_strings << (w + " ") }
+  	ret = %x(cd ..; python driver.py "#{phones}" #{word_strings})
+    puts ret
+  	# ret = ret.strip
+  	# link = ret[6..ret.length]
+  	# r = %x(mv ../#{ret} app/assets/images/#{link} )
+   #  success = log link
+   #  #logger.debug "THIS IS A LOG TEXT #{success}"
+  	# render json:{tree: link, counter: success} .to_json
   end
 
 end
