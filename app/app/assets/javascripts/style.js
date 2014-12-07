@@ -1,11 +1,14 @@
 $(document).ready(function(){
-	$(".tree_form").submit(function(){
+	$(".tree_form").submit(function(event){
 		event.preventDefault();
 		var inpt = $("#text_to_parse").val();
+		// http://stackoverflow.com/questions/596351/how-can-i-get-which-radio-is-selected-via-jquery
+		var grammar = $('input[name=grammar]:checked', '#parsing').val();
+		console.log(grammar);
 		$.ajax({
 			type: 'POST',
 			url: '/path',
-			data: {k : inpt},
+			data: {k : inpt, gram: grammar},
 			async: false,
 		}).done(function(resp){
 			if (resp.tree === null) {
