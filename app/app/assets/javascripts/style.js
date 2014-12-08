@@ -63,6 +63,25 @@ $(document).ready(function(){
 		});
 	});
 
+	$(".ipa_fields").focus(function(event) {
+		$(".ipa_fields").attr("field_selected", "false");
+		$(this).attr("field_selected", "true");
+	});
+	$(".english_fields").focus(function(event) {
+		$(".ipa_fields").attr("field_selected", "false");
+	});
+
+	$(".ipa_sounds").click(function(event) {
+		// insert the button text into the selected IPA text field
+		// really lazy way to do this!
+		if ($("#first_phone").attr("field_selected") === "true") {
+			$("#first_phone").val($(this).text());
+		}
+		else if ($("#second_phone").attr("field_selected") === "true") {
+			$("#second_phone").val($(this).text());
+		}
+	});
+
 	$("#parsing-submit-button").click(function(){
 		$.post("/path", {k: "clear"}, function(){
 			// location.reload();

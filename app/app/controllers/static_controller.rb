@@ -9,6 +9,24 @@ class StaticController < ApplicationController
 
   def phonology
   	cookies[:user_count] = 0 if cookies.key? :user_count
+  	# get sounds and their pronunciations
+  	# examples copied from https://en.wikipedia.org/wiki/Arpabet
+  	s = File.read("sounds.txt").split(/\n/)
+  	@sounds = Array.new
+  	s.each do |sound|
+  		sp = sound.split(/\t/)
+  		ipa = sp[0]
+  		pronunciation = sp[1]
+  		retString = ""
+  		pronunciation.each_char do |letter|
+  			if letter == letter.upcase
+				retString += "<u><em>" + letter.downcase + "</em></u>"  				
+  			else
+  				retString += letter
+  			end
+  		end
+  		@sounds.append([ipa, pronunciation, retString])
+  	end
   end
 
   def log(result)
