@@ -1,4 +1,6 @@
 $(document).ready(function(){
+	numEnglishFields = 5;
+
 	$(".tree_form").submit(function(event){
 		event.preventDefault();
 		var inpt = $("#text_to_parse").val();
@@ -34,7 +36,7 @@ $(document).ready(function(){
 		var phone2 = $("#second_phone").val();
 		// get words
 		var words = [];
-		for (var i = 0; i < 5; i++) {
+		for (var i = 0; i < numEnglishFields; i++) {
 			words.push($("#word" + i).val());
 		};
 		$.ajax({
@@ -82,6 +84,9 @@ $(document).ready(function(){
 		}
 	});
 
+	$("#add_text_field").click(function(){
+		$(".english_fields").add("<input class=\"form-control english_fields\" id=\"word" + numEnglishFields + "\" name=\"word" + numEnglishFields + "\" placeholder=\"English word\" type=\"text\">")
+	});
 	$("#parsing-submit-button").click(function(){
 		$.post("/path", {k: "clear"}, function(){
 			// location.reload();

@@ -6,14 +6,16 @@
 	Below are a list of sounds and how they're pronounced. Click a sound to insert it into the current text area.</p>
 
 <%= form_tag("/", method: "post", class: "col-lg-12 inline phonology_form", id: "phonology") do %>
-	<%= text_field_tag(:first_phone, nil,  class: "form-control ipa_fields", field_selected: "false", maxlength: 2, size: 2, placeholder: "First phone") %>
-	<%= text_field_tag(:second_phone, nil,  class: "form-control ipa_fields", field_selected: "false", maxlength: 2, size: 2, placeholder: "Second phone") %>
+	First sound: <%= text_field_tag(:first_phone, nil,  class: "form-control ipa_fields", field_selected: "false", maxlength: 2, size: 2, placeholder: "e.g.   tʃ") %>
+	Second sound: <%= text_field_tag(:second_phone, nil,  class: "form-control ipa_fields", field_selected: "false", maxlength: 2, size: 2, placeholder: "e.g.   ə") %>
 	<br>
+	English words (you don't have to fill in all the boxes):
 	<%= text_field_tag(:word0, nil,  class: "form-control english_fields", placeholder: "English word") %>
 	<%= text_field_tag(:word1, nil,  class: "form-control english_fields", placeholder: "English word") %>
 	<%= text_field_tag(:word2, nil,  class: "form-control english_fields", placeholder: "English word") %>
 	<%= text_field_tag(:word3, nil,  class: "form-control english_fields", placeholder: "English word") %>
 	<%= text_field_tag(:word4, nil,  class: "form-control english_fields", placeholder: "English word") %>
+	<button id="add_text_field">Add another word</button>
 	<%= submit_tag "Compute", class: "col-lg-offset-10 col-lg-2 submit compute", id: "phonology_submit_button" %>
 <% end %>
 <div id="result"></div>
