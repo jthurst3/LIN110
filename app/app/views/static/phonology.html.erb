@@ -17,22 +17,27 @@
 	<%= text_field_tag(:word4, nil,  class: "form-control english_fields", placeholder: "English word") %>
 	<button id="add_text_field">Add another word</button>
 	<%= submit_tag "Compute", class: "col-lg-offset-10 col-lg-2 submit compute", id: "phonology_submit_button" %>
+	<hr><hr><hr>
 <% end %>
 <div id="result"></div>
 <br><br><br>
-<div id="sounds">
+<div id="sounds" class="row">
+	<% soundCounter = 0 %>
+	<div class="col-lg-4">
 	<% if !@sounds.blank? %>
 	  <% @sounds.each do |sound| %>
 	    <button class="ipa_sounds"><%= sound[0] %></button> as in <%= sound[2].html_safe %>
 	    <br>
+	    <% soundCounter += 1 %>
+	    <% if soundCounter % 10 == 0 %>
+	    	</div><div class="col-lg-4">
+	    <% end %>
 	  <% end %>
-	<% else %>
-	  
+	</div>
 	<% end %>
 </div>
 
-<div id="survey" style="display: none;"><strong>Thank you for using our app. Would you like to take a survey? Go to <%= link_to 'survey', log_new_path %></strong> or 
-<%= button_tag "relearn linguistics" %> </div>
+<div id="survey"><strong>Ready to finish? Please complete <a href="http://goo.gl/forms/DibT5yBkMk">this survey</a> again.</strong></div>
 
 
 

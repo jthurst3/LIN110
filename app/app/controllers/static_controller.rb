@@ -6,6 +6,24 @@ class StaticController < ApplicationController
 
   def parsing
   	cookies[:user_count] = 0 if cookies.key? :user_count
+
+  	s = File.read("vocabulary.txt").split(/\n/)
+  	@words = {}
+  	@words["determiners"] = Array.new
+  	@words["nouns"] = Array.new
+  	@words["verbs"] = Array.new
+  	@words["auxverbs"] = Array.new
+  	@words["adjectives"] = Array.new
+  	@words["adverbs"] = Array.new
+  	@words["conjunctions"] = Array.new
+  	@words["prepositions"] = Array.new
+  	s.each do |w|
+  		sp = w.split(/\t/)
+  		pos = sp[0]
+  		word = sp[1]
+
+  		@words[pos].append(word)
+  	end
   end
 
   def phonology
@@ -56,7 +74,7 @@ class StaticController < ApplicationController
   	r = %x(mv ../#{ret} app/assets/images/#{link} )
     success = log link
     #logger.debug "THIS IS A LOG TEXT #{success}"
-  	render json:{tree: link, counter: success} .to_json
+  	render json:{tree: link, counter: 0} .to_json
   end
 
   def phoneme_allophone_program
@@ -83,7 +101,7 @@ class StaticController < ApplicationController
     # success = log link
     #logger.debug "THIS IS A LOG TEXT #{success}"
     # counter is a placeholder. TODO: consider deleting?
-  	render json:{env1: environment1, env2: environment2, result1: compContrastive, result2: phonemeResult, counter: 1} .to_json
+  	render json:{env1: environment1, env2: environment2, result1: compContrastive, result2: phonemeResult, counter: 0} .to_json
   end
 
 end
