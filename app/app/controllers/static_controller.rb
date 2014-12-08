@@ -83,6 +83,13 @@ class StaticController < ApplicationController
   	words = params['words']
     word_strings = ""
     words.each { |w| word_strings << (w + " ") }
+    numWords = 0
+    words.each do |w|
+    	if w != ""
+    		numWords += 1
+    	end
+    end
+    puts numWords
     %x(cd ..; echo "#{phones}" #{word_strings} >> phonology_queries.txt)
     # puts "python driver.py \"#{phones}\" #{word_strings}"
     # pythonVersion = %x(which python)
@@ -90,18 +97,45 @@ class StaticController < ApplicationController
   	ret = %x(cd ..; python driver.py "#{phones}" #{word_strings})
   	puts ret
   	results = ret.split(/\n/)
-    environment1 = results[0]
-    environment2 = results[1]
-    compContrastive = results[2]
-    phonemeResult = results[3]
-    puts environment1
-    puts environment2
+  	# get IPA of words
+  	phonetics = Array.new(numWords)
+  	phoneCount = 0
+  	overlapString = ""
+  	environment1 = ""
+  	environment2 = ""
+  	compContrastive = ""
+  	phonemeResult = ""
+  	results.each do |r|
+  		if phoneCount < numWords
+  			phonetics[phoneCount] = r
+  		elsif phoneCount == numWords
+  			environment1 = r
+  		elsif phoneCount == numWords + 1
+  			environment2 = r
+  		elsif phoneCount == numWords + 2
+  			overlapString = r
+  		elsif phoneCount == numWords + 3
+  			compContrastive = r
+  		elsif phoneCount == numWords + 4
+  			phonemeResult = r
+  		end
+  		phoneCount += 1
+  	end
+    # environment1 = results[0]
+    # environment2 = results[1]
+    # compContrastive = results[2]
+    # phonemeResult = results[3]
+    puts overlapString
+    puts phonetics
+    puts "env1" + environment1
+    puts "env2" + environment2
   	# link = ret[6..ret.length]
   	# r = %x(mv ../#{ret} app/assets/images/#{link} )
     # success = log link
     #logger.debug "THIS IS A LOG TEXT #{success}"
     # counter is a placeholder. TODO: consider deleting?
-  	render json:{env1: environment1, env2: environment2, result1: compContrastive, result2: phonemeResult, counter: 0} .to_json
+  	render json:{phones: phonetics, env1: environment1, env2: environment2,
+  		result1: compContrastive, result2: phonemeResult, counter: 0, overlap: overlapString} .to_json
   end
 
 end

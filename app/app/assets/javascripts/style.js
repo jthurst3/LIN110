@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	numEnglishFields = 5;
+	numEnglishFields = 10;
 
 	$(".tree_form").submit(function(event){
 		event.preventDefault();
@@ -47,9 +47,21 @@ $(document).ready(function(){
 		}).done(function(resp){
 			// reset the result text
 			$("#result").html("");
+			// append the phonemes
+			for (var i = 0; i < numEnglishFields; i++) {
+				// console.log(i + "th is: " + resp.phones[i]);
+				$("#ipa_" + i).empty();
+			};
+			for (var i = 0; i < resp.phones.length; i++) {
+				// console.log(i + "th is: " + resp.phones[i]);
+				$("#ipa_" + i).html(resp.phones[i]);
+			};
+			console.log(resp.overlap);
 			// output the environments
 			$("#result").append("<b>Environments for [" + phone1 + "]</b>: " + resp.env1 + "<br>");
 			$("#result").append("<b>Environments for [" + phone2 + "]</b>: " + resp.env2 + "<br>");
+			// output overlap
+			$("#result").append("<b>" + resp.overlap + "</b><br>");
 			// output complementary or contrastive
 			$("#result").append("<b>[" + phone1 + "]</b> and <b> [" + phone2 + "]</b> are in " + resp.result1 + ".<br>");
 			// output same or different
