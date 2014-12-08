@@ -6,9 +6,8 @@
 #              separate the two target phonemes and
 #              the list of words. Also calls the analysis
 #              functions.
-from analysis import analyze
 from word import Word
-
+from analysis import analyze
 
 def run(phonemes, words):
     """Driver to call parsing and comparing functions."""
@@ -23,7 +22,9 @@ def run(phonemes, words):
     # for each word in words, return word-trans pair
     # wt_pairs = [Word(w) for w in words]
     # for w in wt_pairs: print(w)
-    analyze(phoneme1, phoneme2, words)
+
+    transcribed_words = [Word(w) for w in words]
+    analyze(phoneme1, phoneme2, transcribed_words)
 
 def parse_phoneme(line):
     """Parses first line of the file into the two target phonemes."""

@@ -16,8 +16,8 @@ def analyze(phoneme1, phoneme2, words):
     majority = math.ceil(len(words)/2)
 
     for word in words:
-        e1 = environment(phoneme1, word)
-        e2 = environment(phoneme2, word)
+        e1 = environment(phoneme1, word.ipa)
+        e2 = environment(phoneme2, word.ipa)
         for pair in e1:
             if pair is not None: env1.append(pair)
         for pair in e2:
