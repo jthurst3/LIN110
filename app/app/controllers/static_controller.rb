@@ -64,7 +64,7 @@ class StaticController < ApplicationController
   	words = params['words']
     word_strings = ""
     words.each { |w| word_strings << (w + " ") }
-    %x(cd ..; echo "#{text}" #{grammar} >> phonology_queries.txt)
+    %x(cd ..; echo "#{phones}" #{word_strings} >> phonology_queries.txt)
   	ret = %x(cd ..; python driver.py "#{phones}" #{word_strings})
   	results = ret.split(/\n/)
     environment1 = results[0]

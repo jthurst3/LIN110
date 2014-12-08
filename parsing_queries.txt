@@ -1,2 +1,10 @@
 clear
 The banana eats the orange 3
+clear
+The elephant eats my pajamas and an orange with the apple. 3
+clear
+The elephant eats my pajamas and an orange. 3
+The elephant eats the banana in my pajamas 2
+clear
+The elephant eats the banana in my pajamas 1
+clear

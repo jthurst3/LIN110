@@ -1,6 +1,9 @@
 # Python pyc files
 *.pyc
 
+# Mac
+.DS_Store
+
 # png and postscript files
 trees/*.ps
 trees/*.png
