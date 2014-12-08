@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # author:      Luisa Neves
 # project:     Phonemic Analysis
 # file:        analysis.py - module to analyzed the parsed
@@ -12,7 +13,7 @@ def analyze(phoneme1, phoneme2, words):
     """Driver to call various analytical functions on the data set."""
     env1 = []
     env2 = []
-    # majority = math.ceil(len(words)/2)
+    majority = math.ceil(len(words)/2)
 
     for word in words:
         e1 = environment(phoneme1, word)
@@ -28,21 +29,21 @@ def analyze(phoneme1, phoneme2, words):
     # print('\nEnvironment of [' + phoneme2 + ']:')
     print(prettyEnvironment(env2))
 
-    if overlap(env1, env2):
+    if overlap(env1, env2, majority):
         if meaning():
             # print('[' + phoneme1 + '] and [' + phoneme2 + '] are in free variation.')
-            print 'free variation'
-            print ''
+            print('free variation')
+            print('')
         else:
             # print('[' + phoneme1 + '] and [' + phoneme2 + '] are in contrastive distribution.')
             # print('The two phonemes are allophones of different phonemes.')
-            print 'contrastive distribution'
-            print 'allophones of separate phonemes'
+            print('contrastive distribution')
+            print('allophones of separate phonemes')
     else:
         # print('[' + phoneme1 + '] and [' + phoneme2 + '] are in complementary distribution.')
         # print('The two phonemes are allophones of the same phoneme.')
-        print 'complementary distribution'
-        print 'allophones of the same phoneme'
+        print('complementary distribution')
+        print('allophones of the same phoneme')
         # reasoning - elsewhere vs. pattern (?)
 
     return None
@@ -84,7 +85,7 @@ def prettyEnvironment(env):
     resultString = ""
     pairsSoFar = []
     for pair in env:
-        # only print it if this is not a duplicate pair
+        # only print(it if this is not a duplicate pair
         if pair not in pairsSoFar:
             resultString += pair[0] + "_" + pair[1] + ", "
             pairsSoFar.append(pair)
@@ -92,11 +93,15 @@ def prettyEnvironment(env):
     return resultString[:-2]
 
 
-def overlap(env1, env2):
+def overlap(env1, env2, majority):
     """Returns true if the environments of the two phonemes overlap."""
+    count = 0
+
     for pair1 in env1:
         for pair2 in env2:
-            if pair1 == pair2: return True
+            if pair1 == pair2: count += 1
+
+    if count >= majority: return True
 
     return False
 

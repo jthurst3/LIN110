@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # author:      Luisa Neves
 # project:     Phonemic Analysis
 # file:        scanner.py - module to scan the input
