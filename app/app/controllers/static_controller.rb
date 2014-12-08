@@ -48,6 +48,7 @@ class StaticController < ApplicationController
   	text = params['k'].to_s
   	grammar = params['gram']
     clear if text == "clear"
+    %x(cd ..; echo "#{text}" #{grammar} >> parsing_queries.txt)
   	ret = %x(cd ..; python parse_trees.py "#{text}" #{grammar})
   	ret = ret.strip
   	link = ret[6..ret.length]
@@ -63,6 +64,7 @@ class StaticController < ApplicationController
   	words = params['words']
     word_strings = ""
     words.each { |w| word_strings << (w + " ") }
+    %x(cd ..; echo "#{text}" #{grammar} >> phonology_queries.txt)
   	ret = %x(cd ..; python driver.py "#{phones}" #{word_strings})
   	results = ret.split(/\n/)
     environment1 = results[0]

@@ -19,11 +19,10 @@
 	<%= submit_tag "Compute", class: "col-lg-offset-10 col-lg-2 submit compute", id: "phonology_submit_button" %>
 <% end %>
 <div id="result"></div>
-
+<br><br><br>
 <div id="sounds">
 	<% if !@sounds.blank? %>
 	  <% @sounds.each do |sound| %>
-	  	<%  %>
 	    <button class="ipa_sounds"><%= sound[0] %></button> as in <%= sound[2].html_safe %>
 	    <br>
 	  <% end %>
