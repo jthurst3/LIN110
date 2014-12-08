@@ -102,7 +102,7 @@ def overlap(env1, env2, majority):
             if pair1 == pair2: count += 1
 
     if count >= majority: return True
-    
+
     return False
 
 def meaning():
