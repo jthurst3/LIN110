@@ -13,7 +13,7 @@ class Word:
     def __init__(self, word):
         self.word = word
         self.arpa = self.arpabet(word)
-        # self.ipa = self.ipa(self.arpa)
+        self.ipa = self.ipa(self.arpa)
 
     def __str__(self):
         s = ''
@@ -132,27 +132,34 @@ class Word:
           elif symbol == 'M':
               trans.append('m')
           elif symbol == 'EM':
-              trans.append('m̩')
+              # trans.append('m̩')
+              trans.append('m')
           elif symbol == 'N':
               trans.append('n')
           elif symbol == 'EN':
-              trans.append('n̩')
+              # trans.append('n̩')
+              trans.append('n')
           elif symbol == 'NG':
               trans.append('ŋ')
           elif symbol == 'ENG':
-              trans.append('ŋ̍')
+              # trans.append('ŋ̍')
+              trans.append('ŋ')
+
 
           # liquids
           elif symbol == 'L':
               trans.append('ɫ')
           elif symbol == 'EL':
-              trans.append('ɫ̩')
+              # trans.append('ɫ̩')
+              trans.append('ɫ')
           elif symbol == 'R':
               trans.append('ɹ')
           elif symbol == 'DX':
               trans.append('ɾ')
           elif symbol == 'NX':
-              trans.append('ɾ̃')
+              # trans.append('ɾ̃')
+              trans.append('ɾ')
+
 
           # semivowels
           elif symbol == 'Y':
@@ -161,5 +168,12 @@ class Word:
               trans.append('w')
           elif symbol == 'Q':
               trans.append('ʔ')
-          
-      return trans
+    
+      # print "hello"
+      # print trans
+      # print ''.join(trans)
+      # convert to unicode
+      # ustr = u'';
+      # for t in trans:
+      #   ustr += t.decode('unicode-escape')
+      return ''.join(trans)

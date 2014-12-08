@@ -15,21 +15,29 @@ def analyze(phoneme1, phoneme2, words):
     env2 = []
     majority = math.ceil(len(words)/2)
 
+    # convert phonemes to unicode
+    phoneme1 = unicode(phoneme1, 'utf-8')
+    phoneme2 = unicode(phoneme2, 'utf-8')
+
     for word in words:
-        e1 = environment(phoneme1, word.ipa)
-        e2 = environment(phoneme2, word.ipa)
+        # convert word to unicode
+        ip = unicode(word.ipa, 'utf-8')
+        e1 = environment(phoneme1, ip)
+        e2 = environment(phoneme2, ip)
         for pair in e1:
             if pair is not None: env1.append(pair)
         for pair in e2:
             if pair is not None: env2.append(pair)
 
     # print('\nEnvironment of [' + phoneme1 + ']:')
-    print(prettyEnvironment(env1))
+    # print(env1)
+    print(prettyEnvironment(env1).encode('utf-8'))
 
     # print('\nEnvironment of [' + phoneme2 + ']:')
-    print(prettyEnvironment(env2))
+    # print(env2)
+    print(prettyEnvironment(env2).encode('utf-8'))
 
-    if overlap(env1, env2, majority):
+    if overlap(env1, env2, 1):
         if meaning():
             # print('[' + phoneme1 + '] and [' + phoneme2 + '] are in free variation.')
             print('free variation')
@@ -54,9 +62,11 @@ def environment(phoneme, word):
     temp = []
     index = -1
 
+
     if phoneme in word:
         while True:
             index = word.find(phoneme, index + 1)
+            # print index, "and", word[index], "and", word
 
             if index is -1:
                 # phoneme not found
@@ -64,9 +74,19 @@ def environment(phoneme, word):
             else:
                 # insert character found before phoneme
                 env.append('#') if index is 0 else env.append(word[index-1])
+                # if index is 0:
+                #     print('#')
+                # else:
+                #     print(word[index-1])
+
 
                 # insert character found after phoneme
                 env.append('#') if index is (len(word)-1) else env.append(word[index+1])
+                # if index is (len(word)-1):
+                #     print('#')
+                # else:
+                #     print(word[index+1])
+
     else:
         env = None
 
@@ -82,14 +102,16 @@ def environment(phoneme, word):
 
 def prettyEnvironment(env):
     """Returns a pretty-printed (LIN110 exercise) version of the environment for a phoneme."""
-    resultString = ""
+    resultString = u''
     pairsSoFar = []
     for pair in env:
         # only print(it if this is not a duplicate pair
         if pair not in pairsSoFar:
-            resultString += pair[0] + "_" + pair[1] + ", "
+            resultString += pair[0] + u"_" + pair[1] + u", "
             pairsSoFar.append(pair)
     # delete the last command and space
+    # print type(resultString)
+    # print type(resultString[:-2])
     return resultString[:-2]
 
 

@@ -1,3 +1,4 @@
+# coding: utf-8
 class StaticController < ApplicationController
   def home
     cookies[:user_count] = 0 if cookies.key? :user_count
@@ -65,7 +66,11 @@ class StaticController < ApplicationController
     word_strings = ""
     words.each { |w| word_strings << (w + " ") }
     %x(cd ..; echo "#{phones}" #{word_strings} >> phonology_queries.txt)
+    # puts "python driver.py \"#{phones}\" #{word_strings}"
+    # pythonVersion = %x(which python)
+    # puts pythonVersion
   	ret = %x(cd ..; python driver.py "#{phones}" #{word_strings})
+  	puts ret
   	results = ret.split(/\n/)
     environment1 = results[0]
     environment2 = results[1]
