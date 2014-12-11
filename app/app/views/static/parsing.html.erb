@@ -13,10 +13,93 @@
 	<%= radio_button_tag(:grammar, "3") %>
 	<%= label_tag(:grammar_3, "Grammar 3 (complex but less restrictive)") %>
 	<%= submit_tag "Draw Tree", class: "col-lg-offset-10 col-lg-2 submit draw_tree", id: "parsing-submit-button" %>
+	<hr><hr><hr>
 <% end %>
 <div id="result"></div>
-<div id="survey" style="display: none;"><strong>Thank you for using our app. Would you like to take a survey? Go to <%= link_to 'survey', log_new_path %></strong> or 
-<%= button_tag "relearn linguistics" %> </div>
+<hr>
+<div id="vocabulary" class="row">
+	<div id="determiners" class="col-lg-2">
+		Determiners:<br>
+		<% if !@words["determiners"].blank? %>
+			  <% @words["determiners"].each do |w| %>
+				<%= w %>
+			    <br>
+			  <% end %>
+			<% end %>
+	</div>
+	<br>
+	<div id="nouns" class="col-lg-2">
+		Nouns:<br>
+		<% if !@words["nouns"].blank? %>
+			  <% @words["nouns"].each do |w| %>
+				<%= w %>
+			    <br>
+			  <% end %>
+			<% end %>
+	</div>
+	<br>
+	<div id="verbs" class="col-lg-2">
+		Verbs:<br>
+		<% if !@words["verbs"].blank? %>
+			  <% @words["verbs"].each do |w| %>
+				<%= w %>
+			    <br>
+			  <% end %>
+			<% end %>
+	</div>
+	<br>
+	<div id="auxiliary-verbs" class="col-lg-2">
+		Auxiliary verbs:<br>
+		<% if !@words["auxverbs"].blank? %>
+			  <% @words["auxverbs"].each do |w| %>
+				<%= w %>
+			    <br>
+			  <% end %>
+			<% end %>
+	</div>
+	<br>
+	<div id="adjectives" class="col-lg-2">
+		Adjectives:<br>
+		<% if !@words["adjectives"].blank? %>
+			  <% @words["adjectives"].each do |w| %>
+				<%= w %>
+			    <br>
+			  <% end %>
+			<% end %>
+	</div>
+	<br>
+	<div id="adverbs" class="col-lg-2">
+		Adverbs:<br>
+		<% if !@words["adverbs"].blank? %>
+			  <% @words["adverbs"].each do |w| %>
+				<%= w %>
+			    <br>
+			  <% end %>
+			<% end %>
+	</div>
+	<br>
+	<div id="conjunctions" class="col-lg-2">
+		Conjunctions:<br>
+		<% if !@words["conjunctions"].blank? %>
+			  <% @words["conjunctions"].each do |w| %>
+				<%= w %>
+			    <br>
+			  <% end %>
+			<% end %>
+	</div>
+	<br>
+	<div id="prepositions" class="col-lg-2">
+		Prepositions:<br>
+		<% if !@words["prepositions"].blank? %>
+			  <% @words["prepositions"].each do |w| %>
+				<%= w %>
+			    <br>
+			  <% end %>
+			<% end %>
+	</div>
+	<br>
+</div>
+<div id="survey"><strong>Ready to move on? Go to <%= link_to 'the phonology portion', phonology_path %>.</strong></div>
 
 
 

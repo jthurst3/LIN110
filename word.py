@@ -35,130 +35,130 @@ class Word:
           # VOWELS
           # monopthongs
           if symbol == 'AO':
-              trans.append('ɔ')
+              trans.append(u'ɔ')
           elif symbol == 'AA':
-              trans.append('ɑ')
+              trans.append(u'ɑ')
           elif symbol == 'IY':
-              trans.append('i')
+              trans.append(u'i')
           elif symbol == 'UW':
-              trans.append('u')
+              trans.append(u'u')
           elif symbol == 'EH':
-              trans.append('ɛ')
+              trans.append(u'ɛ')
           elif symbol == 'IH':
-              trans.append('ɪ')
+              trans.append(u'ɪ')
           elif symbol == 'UH':
-              trans.append('ʊ')
+              trans.append(u'ʊ')
           elif symbol == 'AH': # overlap with AX (?)
-              trans.append('ʌ')
+              trans.append(u'ʌ')
           elif symbol == 'AX':
-              trans.append('ə')
+              trans.append(u'ə')
           elif symbol == 'AE':
-              trans.append('æ')
+              trans.append(u'æ')
 
           # dipthongs
           elif symbol == 'EY':
-              trans.append('eɪ')
+              trans.append(u'eɪ')
           elif symbol == 'AY':
-              trans.append('aɪ')
+              trans.append(u'aɪ')
           elif symbol == 'OW':
-              trans.append('oʊ')
+              trans.append(u'oʊ')
           elif symbol == 'AW':
-              trans.append('aʊ')
+              trans.append(u'aʊ')
           elif symbol == 'OY':
-              trans.append('ɔi')
+              trans.append(u'ɔi')
 
           # R-colored vowels
           elif symbol == 'ER':
-              trans.append('ɝ')
+              trans.append(u'ɝ')
           elif symbol == 'AXR':
-              trans.append('ɚ')
+              trans.append(u'ɚ')
           elif symbol == 'EH': # and next symbol == 'R'
-              trans.append('ɛr')
+              trans.append(u'ɛr')
           elif symbol == 'UH': # and next symbol == 'R'
-              trans.append('ʊr')
+              trans.append(u'ʊr')
           elif symbol == 'AO': # and next symbol == 'R'
-              trans.append('ɔr')
+              trans.append(u'ɔr')
           elif symbol == 'AA': # and next symbol == 'R'
-              trans.append('ɑr')
+              trans.append(u'ɑr')
           elif symbol == 'IH': # and next symbol == 'R'
-              trans.append('ɪr')
+              trans.append(u'ɪr')
           elif symbol == 'IY': # and next symbol == 'R'
-              trans.append('ɪr')
+              trans.append(u'ɪr')
           elif symbol == 'AW': # and next symbol == 'R'
-              trans.append('aʊr')
+              trans.append(u'aʊr')
 
           # CONSONANTS
           # stops
           elif symbol == 'P':
-              trans.append('p')
+              trans.append(u'p')
           elif symbol == 'B':
-              trans.append('b')
+              trans.append(u'b')
           elif symbol == 'T':
-              trans.append('t')
+              trans.append(u't')
           elif symbol == 'D':
-              trans.append('d')
+              trans.append(u'd')
           elif symbol == 'K':
-              trans.append('k')
+              trans.append(u'k')
           elif symbol == 'G':
-              trans.append('g')
+              trans.append(u'g')
 
           # affricates
           elif symbol == 'CH':
-              trans.append('tʃ')
+              trans.append(u'tʃ')
           elif symbol == 'JH':
-              trans.append('dʒ')
+              trans.append(u'dʒ')
 
           # fricatives
           elif symbol == 'F':
-              trans.append('f')
+              trans.append(u'f')
           elif symbol == 'V':
-              trans.append('v')
+              trans.append(u'v')
           elif symbol == 'TH':
-              trans.append('θ')
+              trans.append(u'θ')
           elif symbol == 'DH':
-              trans.append('ð')
+              trans.append(u'ð')
           elif symbol == 'S':
-              trans.append('s')
+              trans.append(u's')
           elif symbol == 'Z':
-              trans.append('z')
+              trans.append(u'z')
           elif symbol == 'SH':
-              trans.append('ʃ')
+              trans.append(u'ʃ')
           elif symbol == 'ZH':
-              trans.append('ʒ')
+              trans.append(u'ʒ')
           elif symbol == 'HH':
-              trans.append('h')
+              trans.append(u'h')
 
           # nasals
           elif symbol == 'M':
-              trans.append('m')
+              trans.append(u'm')
           elif symbol == 'EM':
-              # trans.append('m̩')
-              trans.append('m')
+              # trans.append(u'm̩')
+              trans.append(u'm')
           elif symbol == 'N':
-              trans.append('n')
+              trans.append(u'n')
           elif symbol == 'EN':
-              # trans.append('n̩')
-              trans.append('n')
+              # trans.append(u'n̩')
+              trans.append(u'n')
           elif symbol == 'NG':
-              trans.append('ŋ')
+              trans.append(u'ŋ')
           elif symbol == 'ENG':
-              # trans.append('ŋ̍')
-              trans.append('ŋ')
+              # trans.append(u'ŋ̍')
+              trans.append(u'ŋ')
 
 
           # liquids
           elif symbol == 'L':
-              trans.append('ɫ')
+              trans.append(u'ɫ')
           elif symbol == 'EL':
-              # trans.append('ɫ̩')
-              trans.append('ɫ')
+              # trans.append(u'ɫ̩')
+              trans.append(u'ɫ')
           elif symbol == 'R':
-              trans.append('ɹ')
+              trans.append(u'ɹ')
           elif symbol == 'DX':
-              trans.append('ɾ')
+              trans.append(u'ɾ')
           elif symbol == 'NX':
-              # trans.append('ɾ̃')
-              trans.append('ɾ')
+              # trans.append(u'ɾ̃')
+              trans.append(u'ɾ')
 
 
           # semivowels
@@ -171,9 +171,12 @@ class Word:
     
       # print "hello"
       # print trans
-      # print ''.join(trans)
+      transString = u''
+      for t in trans:
+        transString = (transString + t)
+      print transString.encode('utf-8')
       # convert to unicode
       # ustr = u'';
       # for t in trans:
       #   ustr += t.decode('unicode-escape')
-      return ''.join(trans)
+      return trans
