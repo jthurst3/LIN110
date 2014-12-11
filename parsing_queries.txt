@@ -1,0 +1,24 @@
+clear
+the pajamas writes a pajamas with an apple 1
+clear
+the elephant eats the banana 1
+clear
+the elephant eats the banana with the apple 1
+clear
+the pajamas writes the pajamas with an apple 1
+clear
+the elephants eats an apple 1
+clear
+the elephant eats an apple 1
+the elephant eats the banana 1
+clear
+clear
+the elephant eats the banana 3
+the elephant eats the banana 1
+clear
+the elephant eats the banana with the apple 1
+clear
+the banana kills the elephant with the apple 1
+clear
+clear
+the elephant with the apple eats the banana with the apple 1
