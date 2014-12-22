@@ -63,15 +63,19 @@ class StaticController < ApplicationController
 
   def path
   	puts params
-    puts "hello"
+    puts %x(pwd)
+    puts %x(ls bin)
   	text = params['k'].to_s
   	grammar = params['gram']
     clear if text == "clear"
-    %x(cd ..; echo "#{text}" #{grammar} >> parsing_queries.txt)
-  	ret = %x(cd ..; python parse_trees.py "#{text}" #{grammar})
+    %x(cd bin; echo "#{text}" #{grammar} >> parsing_queries.txt)
+  	ret = %x(cd bin; python parse_trees.py "#{text}" #{grammar})
   	ret = ret.strip
   	link = ret[6..ret.length]
-  	r = %x(mv ../#{ret} app/assets/images/#{link} )
+    # puts "ret is ", ret, " and link is ", link
+    # puts "list is: " + %x(ls bin/#{ret})
+  	r = %x(cd bin; mv #{ret} ../app/assets/images/)
+    # puts "list is: " + %x(ls bin/#{ret})
     success = log link
     #logger.debug "THIS IS A LOG TEXT #{success}"
   	render json:{tree: link, counter: 0} .to_json
@@ -90,11 +94,11 @@ class StaticController < ApplicationController
     	end
     end
     puts numWords
-    %x(cd ..; echo "#{phones}" #{word_strings} >> phonology_queries.txt)
+    %x(cd bin; echo "#{phones}" #{word_strings} >> phonology_queries.txt)
     # puts "python driver.py \"#{phones}\" #{word_strings}"
     # pythonVersion = %x(which python)
     # puts pythonVersion
-  	ret = %x(cd ..; python driver.py "#{phones}" #{word_strings})
+  	ret = %x(cd bin; python driver.py "#{phones}" #{word_strings})
   	puts ret
   	results = ret.split(/\n/)
   	# get IPA of words

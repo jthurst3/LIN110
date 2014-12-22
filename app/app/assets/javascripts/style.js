@@ -19,6 +19,7 @@ $(document).ready(function(){
 			if (resp.tree === null) {
 				$("#result").html("<em>The given sentence is ungrammatical or could not be parsed.</em>");
 			} else {
+				console.log("link is: " + resp.tree);
 				$("#result").html("<img src='assets/"+resp.tree+"'>");
 			}
 			if (resp.counter >= 2) {

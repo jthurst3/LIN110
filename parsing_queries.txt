@@ -22,3 +22,5 @@ the banana kills the elephant with the apple 1
 clear
 clear
 the elephant with the apple eats the banana with the apple 1
+clear
+i saw the red banana with the elephant 1
