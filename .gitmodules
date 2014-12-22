@@ -1,3 +1,3 @@
-[submodule "LingBOT"]
+[submodule "app"]
 	path = app
 	url = git@github.com:jthurst3/LingBOT.git
