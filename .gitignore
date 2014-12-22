@@ -9,3 +9,4 @@ trees/*.ps
 trees/*.png
 app/app/assets/images/tree_*.ps
 app/app/assets/images/tree_*.png
+app/bin/trees
